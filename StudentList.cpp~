@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstring>
+#include <vector>
+
+using namespace std;
+
+struct Student {
+  char firstName[20];
+  char lastName[20];
+  int id;
+  float gpa;
+};
+
+void printHelp();
+void parse (char c[10]);
+void add (vector<Student> v);
+void del (vector<Student> v);
+void quit ();
+void printAll(vector<Student> v);
+
+int main() {
+  cout << "Thank you for using student list" << endl;
+  cout << "Type 'h' for help" << endl;
+
+  //Program will exit in quit function
+  while(true){
+    char input[10];
+    for(int i = 0; i < 10; i++){
+      input[i] = ' ';
+    }
+    cin.get(input, 10);
+    cin.get();
+    parse(toupper(input));
+  }
+
+  return 0;
+}
+
+void parse(char c[10]){
+  if (strcmp(c, "H") == 0 || strcmp(c, "h") == 0){
+    cout << "HELP" << endl;
+  } else if(strcmp(c, "ADD") == 0){
+    cout << "ADD" << endl;
+  } else if(strcmp(c, "PRINT") == 0){
+    cout << "PRINT" << endl;
+  } else if(strcmp(c, "DELETE") == 0){
+    cout << "DELETE" << endl;
+  } else if(strcmp(c, "QUIT") == 0) {
+    cout << "QUIT" << endl;
+  } else {
+    cout << "Sorry, please type in a valid command. Type 'h' for help." << endl;
+  }
+}
+    
