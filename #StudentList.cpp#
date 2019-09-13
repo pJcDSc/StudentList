@@ -56,6 +56,7 @@ bool parse(char c[10], vector<Student>* v){
     printAll(v);
   } else if(strcmp(c, "DELETE") == 0){
     cout << "DELETE" << endl;
+    delete(v);
   } else if(strcmp(c, "QUIT") == 0) {
     //cout << "QUIT" << endl;
     quit();
