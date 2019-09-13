@@ -55,7 +55,8 @@ bool parse(char c[10], vector<Student>* v){
     //cout << "PRINT" << endl;
     printAll(v);
   } else if(strcmp(c, "DELETE") == 0){
-    cout << "DELETE" << endl;
+    //cout << "DELETE" << endl;
+    del(v);
   } else if(strcmp(c, "QUIT") == 0) {
     //cout << "QUIT" << endl;
     quit();
@@ -93,13 +94,35 @@ void add(vector<Student>* v) {
 }
 
 void printAll(vector<Student>* v){
-  vector<Student>::iterator i;
+  vector<Student>::iterator it;
   
-  for (i = (*v).begin(); i != (*v).end(); i++) {
-    cout << (*i).firstName << " " << (*i).lastName << ": " << (*i).id << ", " << (*i).gpa << endl; 
+  for (it = (*v).begin(); it != (*v).end(); it++) {
+    cout << (*it).firstName << " " << (*it).lastName << ": " << (*it).id << ", " << (*it).gpa << endl; 
   }
 }
 
 void quit() {
   cout << "Thank you for using StudentList! Have a great day!" << endl;
 }
+
+void del(vector<Student>* v) {
+  char first[20];
+  char last[20];
+  cout << "Enter the student name (First and Last)" << endl;
+  cin >> first >> last;
+  cin.get();
+  vector<Student>::iterator it;
+
+  bool removed = false;
+  for (it = (*v).begin(); it != (*v).end(); it++){
+    if (strcmp((*it).firstName, first) == 0 && strcmp((*it).lastName, last) == 0) {
+      (*v).erase(it);
+      removed = true;
+      cout << "Removed Student " << first << " " << last << " from list." << endl;
+    }
+  }
+  if(!removed){
+    cout << "Could not find any students with name " << first << " " << last << " in list." << endl;
+  }
+}
+  
