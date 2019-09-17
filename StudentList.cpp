@@ -1,3 +1,11 @@
+/*
+ * Author: Peter Jin
+ * Date: 9/17/19
+ * Program that holds a list of students
+ * each student has a id, gpa, and full name
+ * functions:
+ * Print, Delete, Add, Quit, H
+ */
 #include <iostream>
 #include <cstring>
 #include <vector>
