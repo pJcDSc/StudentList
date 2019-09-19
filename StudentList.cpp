@@ -166,6 +166,8 @@ void del(vector<Student*>* v) {
   //iterate through vector
   for (it = (*v).begin(); it != (*v).end(); it++){
     if (strcmp((**it).firstName, first) == 0 && strcmp((**it).lastName, last) == 0) {
+      //Delete data of pointer
+      delete (*it);
       //Remove student from list
       (*v).erase(it);
       removed = true;
