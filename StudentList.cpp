@@ -153,25 +153,28 @@ void quit() {
 
 //Deletes given student
 void del(vector<Student*>* v) {
-  char first[20];
-  char last[20];
+  int id;
 
   //Prompt user for first and last name
-  cout << "Enter the student name (First and Last)" << endl;
-  cin >> first >> last;
+  cout << "Enter the student ID" << endl;
+  cin >> id;
   cin.get();
   vector<Student*>::iterator it;
   bool removed = false;
-
+  char first[20];
+  char last[20];
+  
   //iterate through vector
   for (it = (*v).begin(); it != (*v).end(); it++){
-    if (strcmp((**it).firstName, first) == 0 && strcmp((**it).lastName, last) == 0) {
+    if ((**it).id == id) {
+      strcpy(first, (**it).firstName);
+      strcpy(last, (**it).lastName);
       //Delete data of pointer
       delete (*it);
       //Remove student from list
       (*v).erase(it);
       removed = true;
-      cout << "Removed Student " << first << " " << last << " from list." << endl;
+      cout << "Removed Student " << first << " " << last << "." << endl;
       break;
     }
   }
